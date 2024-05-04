@@ -1,13 +1,3 @@
-// check to see if word is correct
-// make skip btn
-// track score
-// make time limit
-
-const timeLeft = document.getElementById("time-left");
-const userScore = document.getElementById("user-score");
-const skipBtn = document.getElementById("skip-word-btn");
-const subBtn = document.getElementById("submit-btn");
-
 // DIFF LEVELS
 const easy = [
 	"HOME",
@@ -20,35 +10,606 @@ const easy = [
 	"WORD",
 	"APP",
 	"GAME",
+	"MOP",
+	"CAT",
+	"DOG",
+	"PAN",
+	"RUG",
+	"LOG",
+	"TAP",
+	"NET",
+	"JAM",
+	"SUN",
+	"LIP",
+	"NUT",
+	"TAG",
+	"FLAG",
+	"CAP",
+	"FAN",
+	"HOP",
+	"CUP",
+	"HAT",
+	"PEN",
+	"BOX",
+	"BAG",
+	"LEG",
+	"HOME",
+	"EASY",
+	"LIFE",
+	"BIKE",
+	"FLY",
+	"EYE",
+	"BEST",
+	"WORD",
+	"APP",
+	"GAME",
+	"MOP",
+	"CAT",
+	"DOG",
+	"PAN",
+	"RUG",
+	"LOG",
+	"TAP",
+	"NET",
+	"JAM",
+	"SUN",
+	"LIP",
+	"NUT",
+	"TAG",
+	"FLAG",
+	"CAP",
+	"FAN",
+	"HOP",
+	"CUP",
+	"HAT",
+	"PEN",
+	"BOX",
+	"BAG",
+	"LEG",
 ];
 
-const medium = ["RIVER", "FOOTBALL", "AIRPLANE", "HELLO", "TITLE", "TRIKE"];
+const medium = [
+	"ABRUPTLY",
+	"ACCENT",
+	"ACCLAIM",
+	"ACCORD",
+	"AFFIX",
+	"AGILITY",
+	"ALARM",
+	"AMAZON",
+	"ANXIETY",
+	"APPLE",
+	"ARCHER",
+	"ARTIST",
+	"ATMOSPHERE",
+	"AUDIBLE",
+	"AUTHOR",
+	"AWKWARD",
+	"BALCONY",
+	"BANKER",
+	"BEAMING",
+	"BELIEVE",
+	"BENEATH",
+	"BETWEEN",
+	"BLAZER",
+	"BLOSSOM",
+	"BREEZE",
+	"BUCKET",
+	"BUNDLE",
+	"CABBAGE",
+	"CABLE",
+	"CAMEL",
+	"CANNON",
+	"CARAMEL",
+	"CARPET",
+	"CASTLE",
+	"CAUTION",
+	"CEMENT",
+	"CHAIN",
+	"CHARITY",
+	"CHEER",
+	"CHOCOLATE",
+	"CITIZEN",
+	"CLIMATE",
+	"COLLAGE",
+	"COMPLEX",
+	"CONDUCT",
+	"CONFUSE",
+	"CONNECT",
+	"CONSOLE",
+	"CONTRAST",
+	"CONVERT",
+	"COUPLE",
+	"CRISP",
+	"CRUCIAL",
+	"CULTURE",
+	"CURTAIN",
+	"DAGGER",
+	"DAMAGE",
+	"DANCER",
+	"DECADE",
+	"DEMAND",
+	"DEPOSIT",
+	"DESERT",
+	"DETECT",
+	"DIAMOND",
+	"DILEMMA",
+	"DIRECTOR",
+	"DISCUSS",
+	"DISGUISE",
+	"DISPLAY",
+	"DISTANCE",
+	"DOCTOR",
+	"DOLLAR",
+	"DYNAMIC",
+	"EAGLE",
+	"EARLY",
+	"EARTH",
+	"ECLIPSE",
+	"EDITION",
+	"EFFORT",
+	"ELEVATE",
+	"EMERALD",
+	"EMPLOY",
+	"ENCHANT",
+	"ENDURE",
+	"ENERGY",
+	"ENGINE",
+	"ENVELOPE",
+	"EPISODE",
+	"EQUAL",
+	"ESCAPE",
+	"ETERNAL",
+	"EVOLVE",
+	"EXAMINE",
+	"EXCHANGE",
+	"EXOTIC",
+	"EXTRACT",
+	"FABRIC",
+	"FAIRY",
+	"FALCON",
+	"FAMILY",
+	"FANTASY",
+	"FASHION",
+	"FEATURE",
+	"FEATHER",
+	"FESTIVE",
+	"FIERCE",
+	"FIGURE",
+	"FIREWORK",
+	"FISHING",
+	"FLAMINGO",
+	"FLAVOUR",
+	"FLEXIBLE",
+	"FLOWER",
+	"FLYING",
+	"FOCUS",
+	"FORBID",
+	"FORGET",
+	"FORMAL",
+	"FORTUNE",
+	"FOUNTAIN",
+	"FRAGRANCE",
+	"FRANTIC",
+	"FREEDOM",
+	"FRUIT",
+	"FUEL",
+	"GALAXY",
+	"GARDEN",
+	"GARLIC",
+	"GATHER",
+	"GEMSTONE",
+	"GENERATE",
+	"GENIUS",
+	"GENTLE",
+	"GIGGLE",
+	"GLACIER",
+	"GLANCE",
+	"GLITTER",
+	"GLORY",
+	"GOLDEN",
+	"GOSSIP",
+	"GOVERN",
+	"GRACE",
+	"GRADIENT",
+	"GRAVITY",
+	"GUARDIAN",
+	"GUIDE",
+	"HABITAT",
+	"HAMMER",
+	"HAPPY",
+	"HARMONY",
+	"HARVEST",
+	"HEART",
+	"HEAVEN",
+	"HEROIC",
+	"HORIZON",
+	"HUMBLE",
+	"HUNGRY",
+	"HYGIENE",
+	"ICEBERG",
+	"IDEAL",
+	"ILLUSION",
+	"IMAGINE",
+	"IMPACT",
+	"IMPROVE",
+	"INDEPENDENT",
+	"INFINITY",
+	"INFLUENCE",
+	"INHERIT",
+	"INNOCENT",
+	"INSPIRE",
+	"INTEGRATE",
+	"INTRIGUE",
+	"INVENT",
+	"INVITE",
+	"IRONIC",
+	"ISLAND",
+	"JAGUAR",
+	"JASMINE",
+	"JEWEL",
+	"JOURNEY",
+	"JUNGLE",
+	"JUSTICE",
+	"KANGAROO",
+	"KINDNESS",
+	"KINGDOM",
+	"KNOWLEDGE",
+	"LABYRINTH",
+	"LANGUAGE",
+	"LANTERN",
+	"LAPTOP",
+	"LAVA",
+	"LEGEND",
+	"LIBERTY",
+	"LIONESS",
+	"LIQUID",
+	"LOGIC",
+	"LOYAL",
+	"MAGICAL",
+	"MAGNET",
+	"MAJESTIC",
+	"MANIFEST",
+	"MARCH",
+	"MARVEL",
+	"MAVERICK",
+	"MEADOW",
+	"MEASURE",
+	"MELODY",
+	"MENTOR",
+	"MERCURY",
+	"MERMAID",
+	"MESSAGE",
+	"METEOR",
+	"MIDNIGHT",
+	"MILKY",
+	"MIRROR",
+	"MONUMENT",
+	"MOUNTAIN",
+	"MUSIC",
+	"MYSTERY",
+	"NATURE",
+	"NEBULA",
+	"NIGHTINGALE",
+	"NINJA",
+	"NOBLE",
+	"NURTURE",
+	"OASIS",
+	"OBLIGE",
+	"OCEAN",
+	"OFFER",
+	"ONLINE",
+	"OPAL",
+	"ORACLE",
+	"ORANGE",
+	"ORBIT",
+	"ORIGIN",
+	"OUTCOME",
+	"OUTDOOR",
+	"OUTLOOK",
+	"OYSTER",
+	"PANDA",
+	"PARADISE",
+	"PASSION",
+	"PATIENCE",
+	"PEACE",
+	"PEBBLE",
+	"PENGUIN",
+	"PERFECT",
+	"PHANTOM",
+	"PHOTO",
+	"PIANO",
+	"PIONEER",
+	"PIRATE",
+	"PLANET",
+	"PLEASURE",
+	"POETIC",
+	"POLAR",
+	"POLISH",
+	"POPULAR",
+	"PRECIOUS",
+	"PRESENCE",
+	"PRIME",
+	"PRINCESS",
+	"PRISM",
+	"PROFOUND",
+	"PROGRESS",
+	"PROSPER",
+	"PURPLE",
+	"QUANTUM",
+	"QUEST",
+	"QUIET"
+];
 
-const hard = ["VEHICLE", "VOWELS", "CONTAINER", "SATURN", "SCRABBLE"];
-
-const insane = ["WORDS", "WORDS"];
+let hard = [
+	"ZYGOID",
+	"WRITHEN",
+	"VOLUBLE",
+	"UPBRAID",
+	"TROCHEE",
+	"SQUIRMY",
+	"REVELER",
+	"QUASHED",
+	"PROWLER",
+	"OXYGENS",
+	"NODULES",
+	"MUSTILY",
+	"LUSCIOUS",
+	"JAGUARS",
+	"IGNOBLE",
+	"HYPNOID",
+	"GYRATES",
+	"FURLONG",
+	"EXTINCT",
+	"DESSERT",
+	"CAJOLER",
+	"BURNISH",
+	"AZUREAN",
+	"ADJUNCT",
+	"WONKIER",
+	"VERDANT",
+	"UNGUENT",
+	"TURMOIL",
+	"SOLOIST",
+	"ROGUISH",
+	"QUINTET",
+	"PEDICEL",
+	"OBLONGS",
+	"NEUTRAL",
+	"MOUSING",
+	"KLAXONS",
+	"JIGSAWS",
+	"HUMANLY",
+	"GUNFIRE",
+	"FLOUNCE",
+	"EDIFICE",
+	"DELTOID",
+	"COGNATE",
+	"BYPATHS",
+	"ZYGOTES",
+	"WRINKLE",
+	"VOGUISH",
+	"UMBRAES",
+	"TUMBREL",
+	"SUNKETS",
+	"REVELED",
+	"QUARTET",
+	"PULSATE",
+	"OUTINGS",
+	"NASTILY",
+	"MURMURS",
+	"LUGGAGE",
+	"JIGGLES",
+	"IGNITED",
+	"HYGIENE",
+	"GUFFAWS",
+	"FRUGALS",
+	"EXTOLLS",
+	"DESERTS",
+	"CARACAL",
+	"BOUNCED",
+	"AXOLOTL",
+	"WINKLED",
+	"VERBENA",
+	"UNWOUND",
+	"TURTLES",
+	"SOILAGE",
+	"ROUBLES",
+	"QUAKING",
+	"PYTHONS",
+	"PEDLERS",
+	"OBELISK",
+	"MUTTERS",
+	"KLAXONS",
+	"JABBERS",
+	"HUGGING",
+	"GUSTIER",
+	"FLYOVER",
+	"EDITORS",
+	"DEVICES",
+	"COFFINS",
+	"BYWORDS",
+	"ZEALOTS",
+	"WRONGED",
+	"VOYAGED",
+	"UMBRELS",
+	"TUMBLED",
+	"SUNLAMP",
+	"REVENGE",
+	"QUARTOS",
+	"PUNCHED",
+	"OUTDOES",
+	"NATIONS",
+	"MUMMERY",
+	"LUCKIER",
+	"JITTERY",
+	"IGNITED",
+	"HYGIENE",
+	"GUFFAWS",
+	"FRUGALS",
+	"EXTOLLS",
+	"DESERTS",
+	"CARACAL",
+	"BOUNCED",
+	"AXOLOTL",
+	"WINKLED",
+	"VERBENA",
+	"UNWOUND",
+	"TURTLES",
+	"SOILAGE",
+	"ROUBLES",
+	"QUAKING",
+	"PYTHONS",
+	"PEDLERS",
+	"OBELISK",
+	"MUTTERS",
+	"KLAXONS",
+	"JABBERS",
+	"HUGGING",
+	"GUSTIER",
+	"FLYOVER",
+	"EDITORS",
+	"DEVICES",
+	"COFFINS",
+	"BYWORDS",
+	"ZEALOTS",
+	"WRONGED",
+	"VOYAGED",
+	"UMBRELS",
+	"TUMBLED",
+	"SUNLAMP",
+	"REVENGE",
+	"QUARTOS",
+	"PUNCHED",
+	"OUTDOES",
+	"NATIONS",
+	"MUMMERY",
+	"LUCKIER",
+	"JITTERY",
+	"ILLEGAL",
+	"HUMORED",
+	"GRUFFLY",
+	"FOXHOLE",
+	"EXTRACT",
+	"DYSPEPS",
+	"CAUSTIC",
+	"BONUSES",
+	"AUREOLE",
+	"WRAITHS",
+	"VIOLETS",
+	"UNIQUER",
+	"TUNABLE",
+	"SPUTTER",
+	"ROEBUCK",
+	"QUEERER",
+	"PRAIRIE",
+	"OXIDIZE",
+	"NOSTRUM",
+	"MUGGING",
+	"LOWBROW",
+	"JUXTAPOSE",
+	"INFINITE",
+	"HARANGUE",
+	"GAUNTLET",
+	"FLYTRAP",
+	"EDUCATE",
+	"DOGBANE",
+	"CYPHERS",
+	"BRAVURA",
+	"ZENITHS",
+	"WEIRDOS",
+	"VULGARS",
+	"UNSWORN",
+	"TOURIST",
+	"SPOOLED",
+	"ROOFTOP",
+	"QUICKER",
+	"PRECISE",
+	"OVERLAP",
+	"NUTSHELL",
+	"MONOLOG",
+	"LUGGAGE",
+	"JIGGLES",
+	"IGNITED",
+	"HYGIENE",
+	"GUFFAWS",
+	"FRUGALS",
+	"EXTOLLS",
+	"DESERTS",
+	"CARACAL",
+	"BOUNCED",
+	"AXOLOTL",
+	"WINKLED",
+	"VERBENA",
+	"UNWOUND",
+	"TURTLES",
+	"SOILAGE",
+	"ROUBLES",
+	"QUAKING",
+	"PYTHONS",
+	"PEDLERS",
+	"OBELISK",
+	"MUTTERS",
+	"KLAXONS",
+	"JABBERS",
+	"HUGGING",
+	"GUSTIER",
+	"FLYOVER",
+	"EDITORS",
+	"DEVICES",
+	"COFFINS",
+	"BYWORDS",
+	"ZEALOTS",
+	"WRONGED",
+	"VOYAGED",
+	"UMBRELS",
+	"TUMBLED",
+	"SUNLAMP",
+	"REVENGE",
+	"QUARTOS",
+	"PUNCHED",
+	"OUTDOES",
+	"NATIONS",
+	"MUMMERY",
+	"LUCKIER",
+	"JITTERY",
+	"ILLEGAL",
+	"HUMORED",
+	"GRUFFLY",
+	"FOXHOLE",
+	"EXTRACT",
+	"DYSPEPS",
+	"CAUSTIC",
+	"BONUSES",
+	"AUREOLE",
+	"WRAITHS",
+	"VIOLETS",
+	"UNIQUER",
+	"TUNABLE",
+	"SPUTTER",
+	"ROEBUCK",
+];
 
 // STARTING GAME
+
+const startGameCont = document.getElementById("start-game-container");
+
 const startGame = (e) => {
-	const startGameCont = document.getElementById("start-game-container");
-
 	startGameCont.classList.add("display-none");
-
 	switch (e) {
 		case "easy": {
 			randomWord(easy);
+			countDown(60);
 			break;
 		}
 		case "medium": {
 			randomWord(medium);
+			countDown(200);
 			break;
 		}
 		case "hard": {
 			randomWord(hard);
-			break;
-		}
-		case "insane": {
-			randomWord(insane);
+			countDown(300);
 			break;
 		}
 	}
@@ -61,12 +622,14 @@ let wordIndex = [];
 
 // PULLIONG RANDOM WORD
 const randomWord = (diff) => {
+	disInput = userInput.disabled = false;
 	//SETTING LEVEL TO ARR
 	curLevel.push(diff);
 	// USING VAR TO REMBER THE LEVEL
 	let level = curLevel[0];
 
 	const mixedWord = document.getElementById("mixed-word");
+	mixedWord.classList.remove("display-none");
 
 	let randomNum = Math.floor(Math.random() * level.length);
 
@@ -104,11 +667,16 @@ String.prototype.shuffle = function (keep = "") {
 	);
 };
 
+const subBtn = document.getElementById("submit-btn");
+
 //CHECKING IF WORK IS CORRECT
 const userInput = document.getElementById("word-guess");
 
-const checkingWord = (e) => {
-	userInput.value ? "" : userInput.classList.add("no-input");
+const checkingWord = () => {
+	if (userInput.value == "") {
+		userInput.classList.add("no-input");
+		return;
+	}
 
 	// MAKING USER INPUT ALL UPPER CASE FOR ARR
 	const userInputToUpper = userInput.value.toUpperCase();
@@ -121,11 +689,73 @@ const checkingWord = (e) => {
 		userInput.classList.remove("no-input");
 		wordIndex.pop();
 		randomWord();
+		wordCorrectCount();
 	} else {
 		userInput.value = "";
 		return;
 	}
 };
+
+// SCORE OF USERS CORRECT WORDS
+
+const userScore = document.getElementById("user-score");
+
+let score = 0;
+
+const wordCorrectCount = () => {
+	score++;
+	userScore.innerHTML = `Score: ${score}`;
+};
+
+//GAME RESTART
+const gameRestart = () => {
+	window.location.reload();
+};
+
+//SKIP THE WORD
+const skipWord = () => {
+	if (curLevel.length === 0) {
+		return;
+	} else {
+		wordIndex.pop();
+		randomWord();
+	}
+};
+
+// TIMER FOR GAME
+
+const countDown = (time) => {
+	var countdown = time;
+	var timerDisplay = document.getElementById("time-left");
+
+	var timer = setInterval(function () {
+		countdown--;
+		timerDisplay.textContent = `${countdown}s`;
+		if (countdown <= 0) {
+			clearInterval(timer);
+			endGame();
+		}
+	}, 1000);
+};
+
+// ENDING GAME
+const endGame = () => {
+	const mixedWord = document.getElementById("mixed-word");
+	const gameEndTitle = document.getElementById("end-game");
+
+	gameEndTitle.innerHTML = `Time is up! You scored ${score} points! Wanna play again?`;
+
+	score = 0;
+	userInput.value = "";
+	userScore.innerHTML = `Score: ${score}`;
+	disInput = userInput.disabled = true;
+	curLevel = [];
+	wordIndex = [];
+	mixedWord.classList.add("display-none");
+	startGameCont.classList.remove("display-none");
+};
+
+let disInput = (userInput.disabled = true);
 
 userInput.addEventListener("keydown", (e) => {
 	if (e.code === "Enter") {
