@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Word Scramble</title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="content-wrapper">
+				<div id="title-container">
+					<h1 id="title">Word Scramble</h1>
+				</div>
+
+				<div id="word-container">
+					<p id="mixed-word"></p>
+
+					<div id="start-game-container">
+						<div>Click On The Level You Want</div>
+						<div id="easy" class="btn" onclick="startGame('easy')">Easy</div>
+						<div id="medium" class="btn" onclick="startGame('medium')">
+							Medium
+						</div>
+						<div id="Hard" class="btn" onclick="startGame('hard')">Hard</div>
+						<div id="insane" class="btn" onclick="startGame('insane')">
+							Insane
+						</div>
+					</div>
+				</div>
+
+				<div id="game-info">
+					<div id="time-left-container">
+						<p id="time-left">30s</p>
+					</div>
+
+					<div id="user-score-container">
+						<div id="user-score">Words Correct: 3</div>
+					</div>
+				</div>
+
+				<div id="input-container">
+					<form autocomplete="off" onsubmit="return false">
+						<input type="text" id="word-guess" placeholder="Enter Word" />
+					</form>
+				</div>
+
+				<div id="button-container">
+					<div id="skip-word-btn" class="btn">Skip Word</div>
+					<div id="submit-btn" class="btn" onclick="checkingWord()">
+						Check Word
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="app.js"></script>
+	</body>
+</html>
