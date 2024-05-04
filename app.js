@@ -54,9 +54,9 @@ const startGame = (e) => {
 	}
 };
 
-// INDEX NUMBER FOR WORDS
+//LEVEL PICKED
 let curLevel = [];
-
+// INDEX NUMBER FOR WORDS
 let wordIndex = [];
 
 // PULLIONG RANDOM WORD
@@ -108,6 +108,8 @@ String.prototype.shuffle = function (keep = "") {
 const userInput = document.getElementById("word-guess");
 
 const checkingWord = (e) => {
+	userInput.value ? "" : userInput.classList.add("no-input");
+
 	// MAKING USER INPUT ALL UPPER CASE FOR ARR
 	const userInputToUpper = userInput.value.toUpperCase();
 
@@ -116,6 +118,7 @@ const checkingWord = (e) => {
 	let gameLevel = curLevel[0][postOFWord];
 
 	if (userInputToUpper === gameLevel) {
+		userInput.classList.remove("no-input");
 		wordIndex.pop();
 		randomWord();
 	} else {

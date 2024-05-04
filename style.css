@@ -67,12 +67,20 @@ body {
 	background-color: #fff;
 	padding: 2.5rem;
 }
+.no-input::placeholder {
+	color: #0856bd;
+}
 
 #word-guess {
 	padding: 1rem;
 	width: 300px;
 	font-size: 2rem;
 	border-radius: 0.5rem;
+}
+
+.level-title {
+	padding-bottom: 1rem;
+	font-size: 1.25rem;
 }
 
 /* GAME BTNS  */
