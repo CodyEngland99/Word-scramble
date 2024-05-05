@@ -338,7 +338,7 @@ const medium = [
 	"PURPLE",
 	"QUANTUM",
 	"QUEST",
-	"QUIET"
+	"QUIET",
 ];
 
 let hard = [
@@ -591,28 +591,48 @@ let hard = [
 ];
 
 // STARTING GAME
-
 const startGameCont = document.getElementById("start-game-container");
+const gameCont = document.getElementById("game-container");
 
 const startGame = (e) => {
-	startGameCont.classList.add("display-none");
+	const userInfo = document.getElementById("user-info");
+	const userAlert = document.getElementById("user-name-alert");
+
+	const user = userInfo.value;
+
+	if (userInfo.value === "") {
+		userAlert.classList.remove("display-none");
+		return;
+	}
+
 	switch (e) {
 		case "easy": {
 			randomWord(easy);
-			countDown(60);
+			userName = user;
+			userLevel = "easy";
+			countDown(6);
 			break;
 		}
 		case "medium": {
 			randomWord(medium);
+			userName = user;
+			userLevel = "medium";
 			countDown(200);
 			break;
 		}
 		case "hard": {
 			randomWord(hard);
+			userName = user;
+			userLevel = "hard";
 			countDown(300);
 			break;
 		}
 	}
+
+	userInfo.classList.add("display-none");
+	gameCont.classList.remove("display-none");
+	userAlert.classList.add("display-none");
+	startGameCont.classList.add("display-none");
 };
 
 //LEVEL PICKED
@@ -673,6 +693,8 @@ const subBtn = document.getElementById("submit-btn");
 const userInput = document.getElementById("word-guess");
 
 const checkingWord = () => {
+	saveUserInfo();
+
 	if (userInput.value == "") {
 		userInput.classList.add("no-input");
 		return;
@@ -686,10 +708,10 @@ const checkingWord = () => {
 	let gameLevel = curLevel[0][postOFWord];
 
 	if (userInputToUpper === gameLevel) {
+		wordCorrectCount();
 		userInput.classList.remove("no-input");
 		wordIndex.pop();
 		randomWord();
-		wordCorrectCount();
 	} else {
 		userInput.value = "";
 		return;
@@ -736,6 +758,20 @@ const countDown = (time) => {
 			endGame();
 		}
 	}, 1000);
+};
+
+// SAVING USER NAME
+
+let userName;
+let userLevel;
+
+const saveUserInfo = () => {
+	let userGameinfo = [userLevel, score];
+
+	const userCheck = JSON.parse(localStorage.getItem(userName));
+
+	console.log(userCheck[0]);
+	// localStorage.setItem(userName, JSON.stringify(userGameinfo));
 };
 
 // ENDING GAME

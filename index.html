@@ -12,12 +12,22 @@
 				<div id="title-container">
 					<h1 id="title">Word Scramble</h1>
 				</div>
+				<div id="user-input-container">
+					<form autocomplete="off" onsubmit="return false">
+						<input type="text" id="user-info" placeholder="Enter Your Name" />
+						<p id="user-name-alert" class="display-none">
+							**Please Enter Your Name**
+						</p>
+					</form>
+				</div>
 
 				<div id="word-container">
 					<p id="mixed-word"></p>
 
 					<div id="start-game-container">
-						<div class="level-title" id="end-game">Click On The Level You Want</div>
+						<div class="level-title" id="end-game">
+							Click On The Level You Want
+						</div>
 						<div id="easy" class="btn" onclick="startGame('easy')">Easy</div>
 						<div id="medium" class="btn" onclick="startGame('medium')">
 							Medium
@@ -26,23 +36,25 @@
 					</div>
 				</div>
 
-				<div id="game-info">
-					<div id="time-left-container">
-						<p id="time-left">000s</p>
+				<div class="display-none" id="game-container">
+					<div id="game-info">
+						<div id="time-left-container">
+							<p id="time-left">000s</p>
+						</div>
+
+						<div id="user-score-container">
+							<div id="user-score">Score: 0</div>
+						</div>
 					</div>
 
-					<div id="user-score-container">
-						<div id="user-score">Score: 0</div>
+					<div id="input-container">
+						<form autocomplete="off" onsubmit="return false">
+							<input type="text" id="word-guess" placeholder="Enter Word" />
+						</form>
 					</div>
 				</div>
 
-				<div id="input-container">
-					<form autocomplete="off" onsubmit="return false">
-						<input type="text" id="word-guess" placeholder="Enter Word" />
-					</form>
-				</div>
-
-				<div id="button-container" >
+				<div id="button-container">
 					<div id="skip-word-btn" class="btn" onclick="skipWord()">
 						Skip Word
 					</div>
